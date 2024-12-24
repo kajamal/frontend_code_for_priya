@@ -1,0 +1,99 @@
+// Contactus.js
+
+import React, { useState } from 'react';
+import axios from 'axios';
+import '../styles/contactus.css';
+
+const Contactus = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone_number: '',
+    message: '',
+  });
+
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://192.168.68.211:8081/contactus', formData);
+      console.log('Form submission response:', response.data);
+
+      // Display success message and clear form
+      setSubmitSuccess(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone_number: '',
+        message: '',
+      });
+    } catch (error) {
+      // Handle errors
+      console.error('Error submitting form:', error);
+    }
+  };
+
+  return (
+    <div className="contactus-container">
+      <h2>Contact Us</h2>
+      {submitSuccess && <p className="success-message">Message sent successfully!</p>}
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="phone_number">Phone Number:</label>
+          <input
+            type="text"
+            id="phone_number"
+            name="phone_number"
+            value={formData.phone_number}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="message">Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default Contactus;

@@ -1,0 +1,49 @@
+/*body {
+  margin: 0;
+  padding: 0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  color: #fff;
+}*/
+.container-product {
+  width:80%;
+  height:100%;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+}
+
+h2 {
+  color: #007bff;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+  color: black; /* Set text color for table cells to white */
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #000; /* Set text color for table header cells to black */
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  color: #000; /* Set text color for sticky header cells to black */
+}
